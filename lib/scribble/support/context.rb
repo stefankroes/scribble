@@ -20,7 +20,9 @@ module Scribble
         raise NotImplementedError, 'Class that includes context must implement nodes method'
       end
 
-      def render nodes: nodes, context: self
+      def render nodes: nil, context: self
+        nodes ||= self.nodes
+        
         if !require_conversion?
           render_without_conversion nodes, context
 

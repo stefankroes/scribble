@@ -265,7 +265,7 @@ Nil does not support a literal notation but it can be returned by methods. It is
 
 ### Global methods
 
-Scribble supports the global `if`, `partial`, and `layout` methods. The if method was shown in several previous examples. The `partial` and `layout` methods are similar in that they load a partial through te loader and render it (converting between any format disparities). The difference is that layout takes a block of content to which the partial can yield using the `content` method.
+Scribble supports the global `if`, `partial`, and `layout` methods. The if method was shown in several previous examples. The `partial` and `layout` methods are similar in that they load a partial through the loader and render it (converting between any format disparities). The difference is that layout takes a block of content to which the partial can yield using the `content` method.
 
     # Partial template (loaded by loader as 'foo')
 
@@ -379,7 +379,7 @@ The first line of the class implementation registers this method with the regist
 8. The first call to `split_nodes` returns `Some text` which is added to the beginning of the array, together with the argument to `if` cast to a boolean (`false`).
 9. The `send :elsif` returns and it renders the first list of nodes with a positive condition (`Some more text`)
 
-This might be hard to wrap your head around but once you do it is a clean and easy way to extend the language with new `if`-like constructs without touching the parser. For examples of this, check out [Sitebox.io forms](http://www.sitebox.io/articles/form-method) and [Sitebox.io columns](http://www.sitebox.io/articles/columns-method). Implementations of block methods that don't use split methods are much easier, lake a look at [the implementation](https://github.com/stefankroes/scribble/blob/master/lib/scribble/methods/times.rb) if the `times` method.
+This might be hard to wrap your head around but once you do it is a clean and easy way to extend the language with new `if`-like constructs without touching the parser. For examples of this, check out [Sitebox.io forms](http://www.sitebox.io/articles/form-method) and [Sitebox.io columns](http://www.sitebox.io/articles/columns-method). Implementations of block methods that don't use split methods are much easier, lake a look at [the implementation](https://github.com/stefankroes/scribble/blob/master/lib/scribble/methods/times.rb) of the `times` method.
 
 ### Method implementation API
 

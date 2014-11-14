@@ -19,6 +19,10 @@ Scribble currently has solid architecture and features and it is already used in
 * Pluggable loader architecture for working with partials and layouts
 * Ability to convert between formats when inlining partials and layouts with mixed formats (for example: Markdown and HTML)
 
+## Compatibility
+
+Scribble is only compatible with Ruby 2.0 and Ruby 2.1 because it uses keyword arguments.
+
 ## Installation
 
 Add this line to your application's Gemfile:

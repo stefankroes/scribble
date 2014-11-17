@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Scribble::VERSION
   spec.authors       = ["Stefan Kroes"]
   spec.email         = ["stefan.kroes@lab01.nl"]
-  spec.summary       = "Scribble is a client facing template language similar to Liquid build in Ruby"
-  spec.description   = "Scribble is a client facing template language similar to Liquid. Scribble was written in Ruby and can be used in any Ruby or Ruby on Rails project. It takes a template file, consisting of text and Scribble tags and transforms it into text. Scribble can be used to transform any plain text format like HTML, Markdown, JSON, XML, etc. Client facing means that it is safe to use Scribble to run/evaluate user provided templates."
+  spec.summary       = "Scribble is a customer facing template language similar to Liquid build in Ruby"
+  spec.description   = "Scribble is a customer facing template language similar to Liquid. Scribble was written in Ruby and can be used in any Ruby or Ruby on Rails project. It takes a template file, consisting of text and Scribble tags and transforms it into text. Scribble can be used to transform any plain text format like HTML, Markdown, JSON, XML, etc. Customer facing means that it is safe to use Scribble to run/evaluate user provided templates."
   spec.homepage      = "https://github.com/stefankroes/scribble"
   spec.license       = "MIT"
 

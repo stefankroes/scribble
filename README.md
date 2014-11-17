@@ -1,6 +1,6 @@
 # Scribble
 
-Scribble is a client facing template language similar to Liquid. Scribble was written in Ruby and can be used in any Ruby or Ruby on Rails project. It takes a template file, consisting of text and Scribble tags and transforms it into text. Scribble can be used to transform any plain text format like HTML, Markdown, JSON, XML or plain text. Client facing means that it is safe to use Scribble to run/evaluate user provided templates.
+Scribble is a customer facing template language similar to Liquid. Scribble was written in Ruby and can be used in any Ruby or Ruby on Rails project. It takes a template file, consisting of text and Scribble tags and transforms it into text. Scribble can be used to transform any plain text format like HTML, Markdown, JSON, XML or plain text. Customer facing means that it is safe to use Scribble to run/evaluate user provided templates.
 
 ## Project status and features
 

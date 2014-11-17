@@ -2,42 +2,11 @@
 
 Scribble is a customer facing template language similar to Liquid. Scribble was written in Ruby and can be used in any Ruby or Ruby on Rails project. It takes a template file, consisting of text and Scribble tags and transforms it into text. Scribble can be used to transform any plain text format like HTML, Markdown, JSON, XML or plain text. Customer facing means that it is safe to use Scribble to run/evaluate user provided templates.
 
-## Project status and features
+*Scribble is only compatible with Ruby 2.0 and Ruby 2.1 because it uses keyword arguments.*
 
-Scribble currently has solid architecture and features and it is already used in production in [Sitebox.io](http://www.sitebox.io/). The actual scripting API is still somewhat sparse regarding supported types and methods but will be extended in future minor releases and can also easily be extended on a per application basis. Pull requests enriching the API are very welcome. Scribble currently supports:
+Scribble was developed by Stefan Kroes at [Lab 01](http://www.lab01.nl/) (Dutch website, available for hire ;-) as a part of [Sitebox.io](http://www.sitebox.io/) (Service that lets you create/edit a website using files in your Dropbox).
 
-* A proper grammar based parser, generating user-friendly syntax errors that unclude line and column numbers
-* Excellent runtime error reporting (`Wrong number of arguments (0 for 1-2) for 'partial' at line 1 column 4`)
-* Simple and consistent tag syntax using {{ ... }}
-* Unary and binary operators with proper precedence rules and parentheses
-* Method invocation, method chaining, block methods and command style method invocation (without parentheses)
-* Nested execution scopes (blocks) and rescursive resolving of methods and variables
-* Boolean, integer, string and nil scripting types (Arrays or hashes are not currently supported)
-* Rich object oriented API for scripting with these types
-* Pluggable architecture for additional (application specific) types
-* If/elsif/else, layout and partial methods
-* Pluggable loader architecture for working with partials and layouts
-* Ability to convert between formats when inlining partials and layouts with mixed formats (for example: Markdown and HTML)
-
-## Compatibility
-
-Scribble is only compatible with Ruby 2.0 and Ruby 2.1 because it uses keyword arguments.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'scribble'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install scribble
-
-## Basic Usage
+## How do I use it?
 
 The following example shows how to load a Scribble template and evaluate it.
 
@@ -63,7 +32,7 @@ render_options = {
 Scribble::Template.new(source, template_options).render render_options
 ```
 
-## Basic Template
+## What does it look like?
 
 The following example is a Scribble template repeating some text, folowed by an `if` statement.
 
@@ -84,6 +53,46 @@ In the example above:
 * `foo` and `bar` are variables that can be inserted by passing them into the `render` method from Ruby.
 * `=`, `|`, `&`, `*`, `!=` are operators. Operators are invoked on their left hand side with their right hand side as an argument.
 * `elsif` and `else` are methods that are defined only in the context of an `if` block to split up the block.
+
+## Why Scribble instead of Liquid?
+
+While Liquid is fine for many use-cases, we decided to replace it on the [Sitebox.io](http://www.sitebox.io/) project for the following reasons:
+
+* Liquid uses regular expressions for parsing and tends to ignore most runtime errors, we want to be a little more strict and present the user with helpful error messages that include line and column numbers
+* We needed a template language that's able to convert between different formats when using partials (in particular between Markdown and HTML)
+* While the Liquid syntax can be friendly to non-programmers, an object oriented expression based language is more powerful and expressive
+* Liquid uses different syntax for blocks and inlining, we wanted a single syntax for both
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'scribble'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install scribble
+
+## Project status and features
+
+Scribble currently has solid architecture and features and it is already used in production in [Sitebox.io](http://www.sitebox.io/). The actual scripting API is still somewhat sparse regarding supported types and methods but will be extended in future minor releases and can also easily be extended on a per application basis. Pull requests enriching the API are very welcome. Scribble currently supports:
+
+* A proper grammar based parser, generating user-friendly syntax errors that unclude line and column numbers
+* Excellent runtime error reporting (`Wrong number of arguments (0 for 1-2) for 'partial' at line 1 column 4`)
+* Simple and consistent tag syntax using {{ ... }}
+* Unary and binary operators with proper precedence rules and parentheses
+* Method invocation, method chaining, block methods and command style method invocation (without parentheses)
+* Nested execution scopes (blocks) and rescursive resolving of methods and variables
+* Boolean, integer, string and nil scripting types (Arrays or hashes are not currently supported)
+* Rich object oriented API for scripting with these types
+* Pluggable architecture for additional (application specific) types
+* If/elsif/else, layout and partial methods
+* Pluggable loader architecture for working with partials and layouts
+* Ability to convert between formats when inlining partials and layouts with mixed formats (for example: Markdown and HTML)
 
 ## Template and rendering options
 
@@ -133,7 +142,7 @@ template = Scribble::Template.new template_source
 template.render variables: {a: 1}, registers: {some_private_resource: 2}
 ```
 
-## Template Language
+## Template language
 
 The Scribble template language takes a lot of cues from Ruby:
 
@@ -426,15 +435,6 @@ Scribble::Registry.for String do
 end
 ```
 
-## Why Scribble instead of Liquid?
-
-While Liquid is fine for many use-cases, we decided to replace it on the [Sitebox.io](http://www.sitebox.io/) project for the following reasons:
-
-* Liquid uses regular expressions for parsing and tends to ignore most runtime errors, we want to be a little more strict and present the user with helpful error messages that include line and column numbers
-* We needed a template language that's able to convert between different formats when using partials (in particular between Markdown and HTML)
-* While the Liquid syntax can be friendly to non-programmers, an object oriented expression based language is more powerful and expressive
-* Liquid uses different syntax for blocks and inlining, we wanted a single syntax for both
-
 ## Future work
 
 * Extend language with arrays and possibly hashes
@@ -450,10 +450,8 @@ While Liquid is fine for many use-cases, we decided to replace it on the [Sitebo
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## Origin, License, Copyright
+## License and copyright
 
 Released under the [MIT license](https://github.com/stefankroes/scribble/blob/master/LICENSE.txt)
-
-Scribble was developed by Stefan Kroes at [Lab 01](http://www.lab01.nl/) (Dutch website, available for hire ;-) as a part of [Sitebox.io](http://www.sitebox.io/) (Service that lets you create/edit a website using files in your Dropbox).
 
 Copyright © 2014 Stefan Kroes

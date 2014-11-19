@@ -39,6 +39,7 @@ require_relative 'scribble/objects/string'
 # Method registrations
 
 require_relative 'scribble/methods/if'
+require_relative 'scribble/methods/unless'
 require_relative 'scribble/methods/layout'
 require_relative 'scribble/methods/partial'
 require_relative 'scribble/methods/times'

@@ -18,6 +18,7 @@ require_relative 'objects/string_test'
 # Method registrations
 
 require_relative 'methods/if_test'
+require_relative 'methods/unless_test'
 require_relative 'methods/layout_test'
 require_relative 'methods/partial_test'
 require_relative 'methods/times_test'

@@ -5,13 +5,9 @@ module Scribble
 
       def unless object
         @paths = []
-        send :elsif, object
+        send :elsif, !Registry.to_boolean(object)
 
-        nodes = @paths.each_with_index.map do |(condition, nodes), i|
-          nodes if (i == 0 ? !condition : condition)
-        end
-
-        render(nodes: nodes.compact.first || [])
+        render(nodes: @paths.map { |condition, nodes| nodes if condition }.compact.first || [])
       end
 
       method :elsif, Object, split: true

@@ -22,7 +22,7 @@ module Scribble
 
       def render nodes: nil, context: self
         nodes ||= self.nodes
-        
+
         if !require_conversion?
           render_without_conversion nodes, context
 
@@ -78,14 +78,14 @@ module Scribble
         variables[name] = value
       end
 
-      def resolve_variable call
-        variables[call.name] if call.allow_variable
-      end
-
       # Evaluation
 
       def evaluate call, args, context
-        resolve_variable(call) || Scribble::Registry.evaluate(call.name, self, args, call, context)
+        if variables.has_key?(call.name) && call.allow_variable
+          variables[call.name]
+        else
+          Scribble::Registry.evaluate(call.name, self, args, call, context)
+        end
       rescue Support::Unmatched => local
         raise local if @context.nil? || call.split?
 

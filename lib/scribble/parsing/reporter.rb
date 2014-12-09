@@ -19,7 +19,7 @@ module Scribble
         end
 
         def character
-          source.instance_variable_get(:@str).string[position]
+          source.instance_variable_get(:@str).string[position.bytepos]
         end
 
         def line

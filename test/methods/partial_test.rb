@@ -19,8 +19,8 @@ describe Scribble::Methods::Partial do
   end
 
   it 'has access to template variables' do
-    loader = MockLoader.new test: 'foo={{ foo }}, bar={{ bar }}, foo * bar={{ foo * bar }}'
-    assert_scribble_render "{{ partial 'test' }}", 'foo=3, bar=Foo, foo * bar=FooFooFoo', template: {loader: loader}, variables: {foo: 3, bar: 'Foo'}
+    loader = MockLoader.new test: 'foo={{ foo }}, bar={{ bar }}, foo * bar={{ foo * bar }}, baz={{baz}}'
+    assert_scribble_render "{{ partial 'test' }}", 'foo=3, bar=Foo, foo * bar=FooFooFoo, baz=false', template: {loader: loader}, variables: {foo: 3, bar: 'Foo', baz: false}
   end
 
   it 'has access to template variables when nested' do

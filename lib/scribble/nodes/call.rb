@@ -44,11 +44,11 @@ module Scribble
       end
 
       def evaluated_receiver context
-        @evaluated_receiver ||= @receiver.evaluate context, allow_block: false
+        @receiver.evaluate context, allow_block: false
       end
 
       def evaluated_args context
-        @evaluated_args ||= args.map { |arg| arg.evaluate context, allow_block: false }
+        args.map { |arg| arg.evaluate context, allow_block: false }
       end
     end
   end

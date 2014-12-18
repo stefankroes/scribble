@@ -91,4 +91,11 @@ describe Scribble do
       assert_scribble_raises '{{ foo }}{{ if true }}{{ bar }}{{ end }}{{ end }}', Scribble::Errors::Undefined, "Undefined variable or method 'bar' at line 1 column 26"
     end
   end
+
+  it 'raises the proper errors when objects do not support cast methods' do
+    assert_scribble_raises '{{ no_to_string }}',                                    RuntimeError, "Cannot cast 'Object' to string",  variables: {no_to_string: Object.new}
+    assert_scribble_raises '{{ if true }}{{ no_to_string }}{{ end }}',              RuntimeError, "Cannot cast 'Object' to string",  variables: {no_to_string: Object.new}
+    assert_scribble_raises '{{ if no_to_boolean }}{{ end }}',                       RuntimeError, "Cannot cast 'Object' to boolean", variables: {no_to_boolean: Object.new}
+    assert_scribble_raises '{{ if true }}{{ if no_to_boolean }}{{ end }}{{ end }}', RuntimeError, "Cannot cast 'Object' to boolean", variables: {no_to_boolean: Object.new}
+  end
 end

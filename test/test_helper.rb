@@ -12,9 +12,9 @@ module MiniTest::Assertions
     assert_equal render_result, Scribble::Template.new(source, **template).render(options)
   end
 
-  def assert_scribble_raises source, exception_class = Scribble::Errors::Undefined, message = nil
+  def assert_scribble_raises source, exception_class = Scribble::Errors::Undefined, message = nil, **options
     e = assert_raises exception_class do
-      Scribble::Template.new(source).render
+      Scribble::Template.new(source).render(options)
     end
     assert_equal message, e.message unless message.nil?
   end

@@ -69,10 +69,16 @@ module Scribble
 
     def to_boolean receiver
       evaluate :to_boolean, receiver, []
+    rescue Support::Unmatched
+      # Every object that is passed into Scribble should support to_boolean
+      raise "Cannot cast '#{receiver.class}' to boolean"
     end
 
     def to_string receiver
       evaluate :to_string, receiver, []
+    rescue Support::Unmatched
+      # Every object that is passed into Scribble should support to_string
+      raise "Cannot cast '#{receiver.class}' to string"
     end
 
     # Split, block
